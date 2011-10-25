@@ -4,4 +4,58 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@id/reset"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Начать заново" android:layout_marginBottom="50px"
+            android:onClick="mainClickHandler"
+         />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10px"
+            android:text="Выберите более подходящее Вам описание:" android:gravity="center_horizontal"/>
+
+        <Button
+            android:id="@id/sub1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mainClickHandler"
+        />
+
+        <Button
+            android:id="@+id/plus1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="140px"
+            android:onClick="mainClickHandler"
+         />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/answer_lbl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Ваш социотип" android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/answer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="90px"
+        android:textStyle="bold" android:visibility="invisible"/>
+
 </LinearLayout>
