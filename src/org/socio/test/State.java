@@ -29,9 +29,9 @@ public class State {
             url_s = SocioType.url_for(socio_type);
             url_d = SocioType.url_for(dual_type);
             return true;
-        } else
+        } else {
             return false;
-
+        }
     }
 
     public String sub_question() {
