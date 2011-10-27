@@ -1,8 +1,11 @@
 package org.socio.test;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -11,12 +14,13 @@ import org.socio.test.SocioType;
 public class SocioTestActivity extends Activity {
     private Button sub1;
     private Button plus1;
+
     private TextView answer;
     private TextView answer_lbl;
     private TextView dual;
     private TextView dual_lbl;
-    private Integer current_state[] = { 0, 0, 0, 0 };
-    private Integer current_state_pos = 0;
+
+    private State current_state = new State();
 
     /** Called when the activity is first created. */
     @Override
@@ -33,6 +37,20 @@ public class SocioTestActivity extends Activity {
         // Set first Q
         sub1.setText(SocioType.sub_questions[0]);
         plus1.setText(SocioType.plus_questions[0]);
+
+        answer.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                final Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(current_state.url_s));
+                startActivity(intent);
+            }
+        });
+
+        dual.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                final Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(current_state.url_d));
+                startActivity(intent);
+            }
+        });
     }
 
     public void mainClickHandler(View view) {
@@ -49,44 +67,37 @@ public class SocioTestActivity extends Activity {
 
             sub1.setText(SocioType.sub_questions[0]);
             plus1.setText(SocioType.plus_questions[0]);
-            current_state_pos = 0;
-            for (int i = 0; i < 4; ++i) {
-                current_state[i] = 0;
-            }
+            current_state = new State();
             break;
 
         case R.id.sub1:
-            current_state[current_state_pos / 7] -= 1;
+            current_state.dec();
             sub_plus_common();
             break;
 
         case R.id.plus1:
-            current_state[current_state_pos / 7] += 1;
+            current_state.inc();
             sub_plus_common();
             break;
+
         }
     }
 
     private void sub_plus_common() {
-        current_state_pos += 1;
-
-        if (current_state_pos / 7 == 4) {
-            String st = SocioType.socio_type(current_state);
-            String dt = SocioType.duals.get(st);
-
-            show_result(st, dt);
+        if (current_state.is_done()) {
+            show_result();
         } else {
-            sub1.setText(SocioType.sub_questions[current_state_pos]);
-            plus1.setText(SocioType.plus_questions[current_state_pos]);
+            sub1.setText(current_state.sub_question());
+            plus1.setText(current_state.plus_question());
         }
     }
 
-    private void show_result(String answ_text, String dual_text) {
-        answer.setText(answ_text);
+    private void show_result() {
+        answer.setText(current_state.socio_type);
         answer.setVisibility(View.VISIBLE);
         answer_lbl.setVisibility(View.VISIBLE);
 
-        dual.setText(dual_text);
+        dual.setText(current_state.dual_type);
         dual.setVisibility(View.VISIBLE);
         dual_lbl.setVisibility(View.VISIBLE);
 

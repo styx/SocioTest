@@ -7,8 +7,8 @@ public class SocioType {
     private final static HashMap<String, String> socio_types = new HashMap<String, String>();
     static {
         socio_types.put("0000", "Штирлиц");
-        socio_types.put("0001", "Максим");
-        socio_types.put("0010", "Джек");
+        socio_types.put("0001", "М. Горький");
+        socio_types.put("0010", "Джек Лондон");
         socio_types.put("0011", "Робеспьер");
         socio_types.put("0100", "Гюго");
         socio_types.put("0101", "Драйзер");
@@ -24,11 +24,31 @@ public class SocioType {
         socio_types.put("1111", "Есенин");
     }
 
+    private final static HashMap<String, String> socio_url = new HashMap<String, String>();
+    static {
+        socio_url.put("Штирлиц", "lse");
+        socio_url.put("М. Горький", "lsi");
+        socio_url.put("Джек Лондон", "lie");
+        socio_url.put("Робеспьер", "lii");
+        socio_url.put("Гюго", "ese");
+        socio_url.put("Драйзер", "esi");
+        socio_url.put("Гамлет", "eie");
+        socio_url.put("Достоевский", "eii");
+        socio_url.put("Жуков", "sle");
+        socio_url.put("Габен", "sli");
+        socio_url.put("Дон Кихот", "ile");
+        socio_url.put("Бальзак", "ili");
+        socio_url.put("Наполеон", "see");
+        socio_url.put("Дюма", "sei");
+        socio_url.put("Гексли", "iee");
+        socio_url.put("Есенин", "iei");
+    }
+
     public final static HashMap<String, String> duals = new HashMap<String, String>();
     static {
         duals.put("Дон Кихот", "Дюма");
         duals.put("Робеспьер", "Гюго");
-        duals.put("Гамлет", "Максим Горький");
+        duals.put("Гамлет", "М. Горький");
         duals.put("Есенин", "Жуков");
         duals.put("Джек Лондон", "Драйзер");
         duals.put("Бальзак", "Наполеон");
@@ -37,7 +57,7 @@ public class SocioType {
         // ---
         duals.put("Дюма", "Дон Кихот");
         duals.put("Гюго", "Робеспьер");
-        duals.put("Максим Горький", "Гамлет");
+        duals.put("М. Горький", "Гамлет");
         duals.put("Жуков", "Есенин");
         duals.put("Драйзер", "Джек Лондон");
         duals.put("Наполеон", "Бальзак");
@@ -73,5 +93,9 @@ public class SocioType {
         }
 
         return socio_types.get(tmp);
+    }
+
+    public static final String url_for(String type) {
+        return "http://www.socionika.info/tip/" + socio_url.get(type) + ".html";
     }
 }
