@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="reset"      type="id" />
-    <item name="sub1"       type="id" />
-    <item name="plus1"      type="id" /> 
-    <item name="answer"     type="id" />
-    <item name="answer_lbl" type="id" />
+
+	<item name="reset" type="id"/>
+	<item name="sub1" type="id"/>
+
 </resources>
