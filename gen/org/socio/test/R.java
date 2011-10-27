@@ -14,13 +14,15 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int answer=0x7f040003;
-        public static final int answer_lbl=0x7f040004;
-        public static final int buttons=0x7f040005;
-        public static final int plus1=0x7f040002;
+        public static final int answer=0x7f040006;
+        public static final int answer_lbl=0x7f040005;
+        public static final int buttons=0x7f040002;
+        public static final int dual=0x7f040008;
+        public static final int dual_lbl=0x7f040007;
+        public static final int plus1=0x7f040004;
         public static final int reset=0x7f040000;
         public static final int sub1=0x7f040001;
-        public static final int textView1=0x7f040006;
+        public static final int textView1=0x7f040003;
     }
     public static final class layout {
         public static final int main=0x7f030000;
